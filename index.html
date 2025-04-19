@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinta Sekolah Kita</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+            overflow-x: hidden;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            animation: fadeInDown 2s ease;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .gallery img {
+            width: 300px;
+            border-radius: 20px;
+            margin: 15px;
+            animation: fadeInUp 2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        audio {
+            display: block;
+            margin: 20px auto;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Cinta Kita di Sekolah</h1>
+
+<p style="font-size: 1.3em; margin-top: 20px; animation: fadeInDown 2s ease 1s;">
+    Aku milih lagu ini karena... ya jelas, ini lagu kesukaan kamu!<br>
+    Dan foto itu? Iya itu foto imut kita — bukti bahwa kita bisa bikin seragam sekolah jadi lebih estetik dari fashion week.<br>
+    Jadi, jangan ngambek lagi ya... nanti senyum kamu hilang, padahal itu yang paling aku suka.<br>
+    Kalau kamu senyum, dunia ikut cerah — dan kalau kamu marah, jantung aku langsung kayak sinyal WiFi... putus nyambung.
+</p>
+
+
+    <!-- Autoplay backsound romantis -->
+    <audio id="backsound" src="song.mp3" autoplay loop muted preload="auto" oncanplay="this.muted=false;"></audio>
+
+    <!-- Suara "aku sayang kamu" -->
+    <audio id="ucapan" src="aku_sayang_kamu.mp3" preload="auto" controls></audio>
+
+    <!-- Galeri Foto -->
+    <div class="gallery">
+        <img src="foto1.jpg" alt="Foto Kenangan">
+    </div>
+
+<div class="rain-container"></div>
+<style>
+.rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: fall 5s linear infinite;
+}
+.heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+@keyframes fall {
+    0% { top: -10%; opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+</style>
+<script>
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + "vw";
+    document.querySelector('.rain-container').appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
